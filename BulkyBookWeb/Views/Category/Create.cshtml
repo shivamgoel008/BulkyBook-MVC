@@ -1,0 +1,43 @@
+﻿@model Category
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-light">Create Category</h2>
+        </div>
+       
+        <div asp-validation-summary="All"></div>
+
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            @*when form is posted it will post an object of this category(line no1 ) class with name populated *@
+            <input asp-for="Name" class="form-control" />
+            @*below satement is used to validate the feild if it is not proper than it shows the error message*@
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DisplayOrder"></label>
+            @*when form is posted it will post an object of this category(line no1 ) class with name populated *@
+            <input asp-for="DisplayOrder" class="form-control" />
+            @*below satement is used to validate the feild if it is not proper than it shows the error message*@
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:150px">
+            Create
+        </button>
+
+        @*this link used to go back to the index action method inside the category controller to load 
+        all categories *@
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
